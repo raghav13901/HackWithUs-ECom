@@ -13,6 +13,7 @@ const RegisterUserScreen = ({ history }) => {
   const [address, setAddress] = useState("");
   const [phNo, setPhone] = useState();
   const [shopName, setShopName] = useState(" ");
+  const [desc, setDesc] = useState(" ");
   const type = 'Customer';
   const registerHandler = async (e) => {
     e.preventDefault();
@@ -36,7 +37,8 @@ const RegisterUserScreen = ({ history }) => {
           address,
           phNo,
           shopName,
-          type
+          type,
+          desc
         },
       );
 

@@ -29,11 +29,6 @@ function Navbar(props) {
                 Home
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Search
-              </a>
-            </li>
             {localStorage.getItem("authToken") != undefined ? (
               <li class="nav-item">
                 <a

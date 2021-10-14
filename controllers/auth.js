@@ -32,8 +32,8 @@ exports.login = async (req, res, next) => {
 
 // @desc    Register user
 exports.register = async (req, res, next) => {
-  const { name, email, password, address, phNo, shopName, type } = req.body;
-
+  const { name, email, password, address, phNo, shopName, type, desc } = req.body;
+  console.log(req.body);
   try {
     const user = await User.create({
       name,
@@ -42,7 +42,8 @@ exports.register = async (req, res, next) => {
       address,
       phNo,
       shopName,
-      type
+      type,
+      desc
     });
 
     sendToken(user, 200, res);

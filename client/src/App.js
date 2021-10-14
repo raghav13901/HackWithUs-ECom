@@ -11,6 +11,7 @@ import PrivateRoute from "./components/screens/privateRoute";
 
 // Screens
 import PrivateScreen from "./components/screens/privateRoute";
+import Shop from "./components/shop/shop";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path="/login" component={LoginScreen} />
           <Route exact path="/register" component={RegisterScreen} />
           <Route exact path="/registerCustomer" component={RegisterUserScreen} />
+          <Route exact path="/shop/:id" component={Shop} />
           <PrivateRoute path="/dashboard/:id" component={Dashboard}/>
           <PrivateRoute path="/addItem" component={AddItem}/>
         </Switch>

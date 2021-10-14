@@ -12,6 +12,7 @@ const RegisterScreen = ({ history }) => {
   const [error, setError] = useState("");
   const [address, setAddress] = useState("");
   const [phNo, setPhone] = useState();
+  const [desc, setDesc] = useState(" ");
   const [shopName, setShopName] = useState("");
   const type = 'Seller';
   const registerHandler = async (e) => {
@@ -36,7 +37,8 @@ const RegisterScreen = ({ history }) => {
           address,
           phNo,
           shopName,
-          type
+          type,
+          desc
         },
       );
 
@@ -231,6 +233,24 @@ const RegisterScreen = ({ history }) => {
                           placeholder="Enter Shop Name"
                           value={shopName}
                           onChange={(e) => setShopName(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="SignFRow form-group">
+                    <div className="row align-items-center">
+                      <div className="col-1 text-left">
+                        <label htmlFor="password">
+                          <i class="fas fa-database fa-lg"></i>
+                        </label>
+                      </div>
+                      <div className="col-11 textF">
+                        <textarea
+                          required
+                          autoComplete="true"
+                          placeholder="Enter Shop Description"
+                          value={desc}
+                          onChange={(e) => setDesc(e.target.value)}
                         />
                       </div>
                     </div>

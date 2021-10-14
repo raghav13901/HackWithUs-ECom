@@ -48,6 +48,10 @@ const UserSchema = new mongoose.Schema({
   prevOrders:{
     type:Array
   },
+  desc:{
+    type:String,
+    required:[true, "Please provide Description"]
+  },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });

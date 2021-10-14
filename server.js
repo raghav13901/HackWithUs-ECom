@@ -18,6 +18,7 @@ app.get("/", (req, res, next) => {
 });
 app.use("/api/auth", require("./routes/auth"));
 app.use("/dashboard", require("./routes/dashboard"));
+app.use("/home", require("./routes/home"));
 
 // Error Handler Middleware
 app.use(errorHandler);
