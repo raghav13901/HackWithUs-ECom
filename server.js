@@ -4,15 +4,22 @@ const path = require("path");
 const app = express();
 const connectDB = require("./config/db");
 const errorHandler = require("./middleware/error");
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const bodyParser = require("body-parser");
+const cors = require("cors");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 connectDB();
 
 app.use(express.json());
+if (process.env.NODE_ENV === "production") {
+  //Set static folder
+  app.use(express.static("client/build"));
 
+  app.get("*", (request, response) => {
+    response.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
 app.get("/", (req, res, next) => {
   res.send("Api running");
 });
