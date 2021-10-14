@@ -16,9 +16,8 @@ app.use(express.json());
 app.get("/", (req, res, next) => {
   res.send("Api running");
 });
-// app.use("/api/auth", require("./routes/auth"));
-// app.use("/api/private", require("./routes/private"));
-// app.use("/dashboard", require("./routes/dashboard"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/dashboard", require("./routes/dashboard"));
 
 // Error Handler Middleware
 app.use(errorHandler);

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./register.css";
 import img from "../../assets/undraw_authentication_fsn5 (3).svg";
 
-const RegisterScreen = ({ history }) => {
+const RegisterUserScreen = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,8 +12,8 @@ const RegisterScreen = ({ history }) => {
   const [error, setError] = useState("");
   const [address, setAddress] = useState("");
   const [phNo, setPhone] = useState();
-  const [shopName, setShopName] = useState("");
-  const type = 'Seller';
+  const [shopName, setShopName] = useState(" ");
+  const type = 'Customer';
   const registerHandler = async (e) => {
     e.preventDefault();
 
@@ -215,26 +215,6 @@ const RegisterScreen = ({ history }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="SignFRow form-group">
-                    <div className="row align-items-center">
-                      <div className="col-1 text-left">
-                        <label htmlFor="password">
-                          <i class="fas fa-database fa-lg"></i>
-                        </label>
-                      </div>
-                      <div className="col-11 textF">
-                        <input
-                          type="text"
-                          required
-                          id="dbName"
-                          autoComplete="true"
-                          placeholder="Enter Shop Name"
-                          value={shopName}
-                          onChange={(e) => setShopName(e.target.value)}
-                        />
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -268,4 +248,4 @@ const RegisterScreen = ({ history }) => {
   );
 };
 
-export default RegisterScreen;
+export default RegisterUserScreen;

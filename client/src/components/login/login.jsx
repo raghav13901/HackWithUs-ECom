@@ -11,7 +11,7 @@ const LoginScreen = ({ history }) => {
 
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
-      history.push(`/home/${localStorage.getItem("id")}`);
+      history.push(`/dashboard/${localStorage.getItem("id")}`);
     }else{
       history.push('/login');
     }
@@ -20,24 +20,17 @@ const LoginScreen = ({ history }) => {
   const loginHandler = async (e) => {
     e.preventDefault();
 
-    const config = {
-      header: {
-        "Content-Type": "application/json",
-      },
-    };
-
     try {
       const {data}  = await axios.post(
         "/api/auth/login",
         { email, password },
-        config
       );
       
       localStorage.setItem("authToken", data.token);
       localStorage.setItem("id", data.id);
       localStorage.setItem("table", data.dbName);
       console.log(data);
-      history.push(`/home/${localStorage.getItem("id")}`);
+      history.push(`/dashboard/${localStorage.getItem("id")}`);
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {
