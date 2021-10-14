@@ -31,7 +31,7 @@
   .SignForm {
     padding: 8% 12% 10%;
   }
-  .SignForm input {
+  .SignForm input, .SignForm textarea {
     border: none;
     width: 90%;
     margin-left: 5%;
@@ -41,10 +41,10 @@
     color: #4944a0;
     caret-color: #4944a0;
   }
-  .SignForm input::placeholder {
+  .SignForm input::placeholder,.SignForm textarea::placeholder {
     color: #4944a0;
   }
-  .SignForm input:focus,.SignForm input:focus-visible {
+  .SignForm input:focus,.SignForm input:focus-visible,.SignForm textarea:focus-visible {
     outline: none;
     border-bottom: 2.5px solid #4944a0;
   }
@@ -71,7 +71,6 @@
   }
   .SignScreen a {
     color: #4944a0;
-    font-style: italic;
     text-decoration: none;
   }
   .SignScreen a:hover {
@@ -107,7 +106,7 @@
     bottom: auto;
     background-color: transparent;
     border: 0;
-    height: 40px;
+    height: 20px;
   }
   .SignScreen .carousel-control-next:hover,
   .SignScreen .carousel-control-prev:hover {

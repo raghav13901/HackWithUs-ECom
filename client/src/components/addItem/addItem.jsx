@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import firebase, { storage } from "../../config/fire";
+import Navbar from "../navbar/navbar";
+import "./add.css";
 
 function AddItem(props) {
   const [itemName, setItemN] = useState("");
@@ -16,11 +18,11 @@ function AddItem(props) {
         itemQuantity,
         itemTotal,
         itemPrice,
-        path
+        path,
       })
       .then((data) => {
-        if(data.status == 200)
-          window.location.href = `/dashboard/${localStorage.getItem('id')}`;
+        if (data.status == 200)
+          window.location.href = `/dashboard/${localStorage.getItem("id")}`;
       })
       .catch((err) => console.log(err));
   };
@@ -51,48 +53,64 @@ function AddItem(props) {
         (error) => {
           console.log(error);
         },
-          ()=>{
-            setImageState("completed");
-            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-              updatePath(downloadURL);
-              console.log(path);
-            });
-          }
+        () => {
+          setImageState("completed");
+          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+            updatePath(downloadURL);
+            console.log(path);
+          });
+        }
       );
       console.log(path);
     }
   };
   return (
-    <div>
+    <div className="form">
+      <Navbar/>
       <form>
-        <div className="inputField">
-          Item Image
-          <input
-            type="file"
-            accept=".jpeg,.jpg,.png"
-            multiple={false}
-            name="image"
-            onChange={imageHandler}
-            required
-          />
+        <h3>Add items</h3>
+        <div className="inputField row">
+          <div className="col-3">Item Image</div>
+          <div className="col-9">
+            <input
+              type="file"
+              accept=".jpeg,.jpg,.png"
+              multiple={false}
+              name="image"
+              onChange={imageHandler}
+              required
+            />
+          </div>
         </div>
-        <div className="inputField">
-          Item Name
-          <input type="text" onChange={(e) => setItemN(e.target.value)} />
+        <div className="inputField row">
+          <div className="col-3">Item Name</div>
+          <div className="col-9">
+            <input type="text" onChange={(e) => setItemN(e.target.value)} />
+          </div>
         </div>
-        <div className="inputField">
-          Item Quantity
-          <input type="number" onChange={(e) => setItemQ(e.target.value)} />
+        <div className="inputField row">
+          <div className="col-3">Item Quantity</div>
+          <div className="col-9">
+            <input type="number" onChange={(e) => setItemQ(e.target.value)} />
+          </div>
         </div>
-        <div className="inputField">
-          Item Total
-          <input type="number" onChange={(e) => setItemT(e.target.value)} />
+        <div className="inputField row">
+          <div className="col-3">Item Total</div>
+          <div className="col-9">
+            <input type="number" onChange={(e) => setItemT(e.target.value)} />
+          </div>
         </div>
-        <div className="inputField">
-          Item Price
-          <input type="number" onChange={(e) => setItemP(e.target.value)} />
+        <div className="inputField row">
+          <div className="col-3">Item Price</div>
+          <div className="col-9">
+            <input type="number" onChange={(e) => setItemP(e.target.value)} />
+          </div>
         </div>
-        <button type="button" onClick={addItem}>
+        <button
+          type="button"
+          className="btn btn-primary btn-lg"
+          onClick={addItem}
+        >
           Add
         </button>
       </form>

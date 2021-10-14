@@ -23,6 +23,7 @@ function Dashboard({ match }) {
     <div className="dashboard">
       <Navbar />
       <div>
+        <h2>Dashboard</h2>
         {userData == "" ? (
           "No data"
         ) : (
@@ -63,72 +64,11 @@ function Dashboard({ match }) {
             </div>
             {userData.type == "Customer" ? (
               <div className="row customer">
-                <h3>Your Orders</h3>
-                {
-                  userData.prevOrders.length > 0
-                  ?
-                  userData.prevOrders.map((order) => {
-                    return (
-                      <div class="card col-4" style={{ width: "18rem" }}>
-                        <div class="card-body">
-                          <h6>Items -</h6>
-                          <h6 class="card-title">
-                            <ul>
-                              {order.items.map((item) => {
-                                return (
-                                  <li>
-                                    {item.item} - {item.quantity}
-                                  </li>
-                                );
-                              })}
-                            </ul>
-                          </h6>
-                          <h6 class="card-title">Price - {order.price}</h6>
-                          <h6 class="card-title">Shop - {order.shop}</h6>
-                          <h6 class="card-title">OTP - {order.OTP}</h6>
-                        </div>
-                      </div>
-                    );
-                  })
-                  :
-                  'No Previous Orders'
-                }
-              </div>
-            ) : (
-              <div className="row seller">
-                <a href="/addItem">Add Item</a>
-                <h2>Your Items</h2>
-                {userData.inventory.length != 0 ? (
-                  <div>
-                    {userData.inventory.map((item) => {
+                <h2>Your Orders</h2>
+                {userData.prevOrders.length > 0
+                  ? userData.prevOrders.map((order) => {
                       return (
-                        <div class="card col-2">
-                          <img
-                            src={item.Image}
-                            class="card-img-top"
-                            alt={item.Name}
-                          />
-                          <div class="card-body">
-                            <h6 class="card-title">Name - {item.Name}</h6>
-                            <h6 class="card-title">Price - {item.Price}</h6>
-                            <h6 class="card-title">Quantity - {item.Quantity}</h6>
-                            <h6 class="card-title">Total - {item.Total}</h6>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  "No Items"
-                )}
-                <h3>Your previous orders</h3>
-                <div className="row">
-                  {
-                    userData.orderPlaced.length > 0
-                    ?
-                    userData.orderPlaced.map((order) => {
-                      return (
-                        <div class="card col-4">
+                        <div class="card col-3">
                           <div class="card-body">
                             <h6>Items -</h6>
                             <h6 class="card-title">
@@ -143,14 +83,71 @@ function Dashboard({ match }) {
                               </ul>
                             </h6>
                             <h6 class="card-title">Price - {order.price}</h6>
+                            <h6 class="card-title">Shop - {order.shop}</h6>
                             <h6 class="card-title">OTP - {order.OTP}</h6>
                           </div>
                         </div>
                       );
                     })
-                    :
-                    'No Previous Orders'
-                  }
+                  : "No Previous Orders"}
+              </div>
+            ) : (
+              <div className="row seller">
+                <div className="row align-items-center">
+                  <div className="col-8">
+                    <h2>Your Items</h2>
+                  </div>
+                  <div className="col-4">
+                    <a className="btn btn-primary" href="/addItem">Add Item</a>
+                  </div>
+                </div>
+                {userData.inventory.length != 0
+                  ? userData.inventory.map((item) => {
+                      return (
+                        <div class="card col-2">
+                          <img
+                            src={item.Image}
+                            class="card-img-top"
+                            alt={item.Name}
+                          />
+                          <div class="card-body">
+                            <h6 class="card-title">Name - {item.Name}</h6>
+                            <h6 class="card-title">Price - {item.Price}</h6>
+                            <h6 class="card-title">
+                              Quantity - {item.Quantity}
+                            </h6>
+                            <h6 class="card-title">Total - {item.Total}</h6>
+                          </div>
+                        </div>
+                      );
+                    })
+                  : "No Items"}
+                <h2>Your previous orders</h2>
+                <div className="row">
+                  {userData.orderPlaced.length > 0
+                    ? userData.orderPlaced.map((order) => {
+                        return (
+                          <div class="card col-3">
+                            <div class="card-body">
+                              <h6>Items -</h6>
+                              <h6 class="card-title">
+                                <ul>
+                                  {order.items.map((item) => {
+                                    return (
+                                      <li>
+                                        {item.item} - {item.quantity}
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              </h6>
+                              <h6 class="card-title">Price - {order.price}</h6>
+                              <h6 class="card-title">OTP - {order.OTP}</h6>
+                            </div>
+                          </div>
+                        );
+                      })
+                    : "No Previous Orders"}
                 </div>
               </div>
             )}

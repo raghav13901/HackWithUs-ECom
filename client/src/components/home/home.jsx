@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar/navbar';
+import './home.css';
 
 function Home(props) {
     const [data,setData] = useState("");
@@ -15,7 +16,7 @@ function Home(props) {
         getAllItems();
     },[]);
     return (
-        <div>
+        <div className="home">
             <Navbar/>
             <h1>Vendors near by</h1>
             {
@@ -28,11 +29,13 @@ function Home(props) {
                             <div class="card col-3">
                                 <div class="card-body">
                                     <h5 class="card-title">{item.shopName}</h5>
-                                    <h6 class="card-title">{item.phNo}</h6>
-                                    <h6 class="card-title">{item.address}</h6>
-                                    <h6 class="card-title">{item.desc}</h6>
+                                    <h6 class="card-title">Phone - {item.phNo}</h6>
+                                    <h6 class="card-title">Address - {item.address}</h6>
+                                    <h6 class="card-title">Description -{item.desc}</h6>
                                 </div>
-                                <a href={`/shop/${item._id}`}>View Items</a>
+                                <div className="text-center link">
+                                    <a className="btn btn-primary" href={`/shop/${item._id}`}>View Items</a>
+                                </div>
                             </div>      
                             )
                         })

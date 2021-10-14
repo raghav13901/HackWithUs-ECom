@@ -9,7 +9,7 @@ function Navbar(props) {
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          Navbar
+          Virtual Shoppers
         </a>
         <button
           class="navbar-toggler"

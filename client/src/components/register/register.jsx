@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./register.css";
 import img from "../../assets/undraw_authentication_fsn5 (3).svg";
+import Navbar from "../navbar/navbar";
 
 const RegisterScreen = ({ history }) => {
   const [name, setName] = useState("");
@@ -14,7 +15,7 @@ const RegisterScreen = ({ history }) => {
   const [phNo, setPhone] = useState();
   const [desc, setDesc] = useState(" ");
   const [shopName, setShopName] = useState("");
-  const type = 'Seller';
+  const type = "Seller";
   const registerHandler = async (e) => {
     e.preventDefault();
 
@@ -28,19 +29,16 @@ const RegisterScreen = ({ history }) => {
     }
 
     try {
-      const { data } = await axios.post(
-        "/api/auth/register",
-        {
-          name,
-          email,
-          password,
-          address,
-          phNo,
-          shopName,
-          type,
-          desc
-        },
-      );
+      const { data } = await axios.post("/api/auth/register", {
+        name,
+        email,
+        password,
+        address,
+        phNo,
+        shopName,
+        type,
+        desc,
+      });
 
       localStorage.setItem("authToken", data.token);
       localStorage.setItem("id", data.id);
@@ -56,48 +54,26 @@ const RegisterScreen = ({ history }) => {
 
   return (
     <div className="SignScreen signScreen">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            SupDB
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link" href="/login">
-                  Login
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar/>
       <div className="SignRow row align-items-center">
         <div className="col-lg-8 SignImg text-center">
           <img src={img} alt="Sign In Img" />
         </div>
         <div className="col-lg-4">
           <form
-           onSubmit={registerHandler}
-           className="SignForm shadow-lg rounded"
+            onSubmit={registerHandler}
+            className="SignForm shadow-lg rounded"
           >
             <h2 className="register-screen__title">Register</h2>
             {error && <span className="error-message">{error}</span>}
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div
+              id="carouselExampleControls"
+              class="carousel slide"
+              data-ride="carousel"
+            >
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                <div className="SignFRow form-group">
+                  <div className="SignFRow form-group">
                     <div className="row align-items-center">
                       <div className="col-1 text-left">
                         <label htmlFor="name">
@@ -177,7 +153,7 @@ const RegisterScreen = ({ history }) => {
                   </div>
                 </div>
                 <div class="carousel-item">
-                <div className="SignFRow form-group">
+                  <div className="SignFRow form-group">
                     <div className="row align-items-center">
                       <div className="col-1 text-left">
                         <label htmlFor="password">
@@ -221,7 +197,7 @@ const RegisterScreen = ({ history }) => {
                     <div className="row align-items-center">
                       <div className="col-1 text-left">
                         <label htmlFor="password">
-                          <i class="fas fa-database fa-lg"></i>
+                        <i class="fas fa-shopping-cart fa-lg"></i>
                         </label>
                       </div>
                       <div className="col-11 textF">
@@ -241,7 +217,7 @@ const RegisterScreen = ({ history }) => {
                     <div className="row align-items-center">
                       <div className="col-1 text-left">
                         <label htmlFor="password">
-                          <i class="fas fa-database fa-lg"></i>
+                          <i class="fas fa-info-circle fa-lg"></i>
                         </label>
                       </div>
                       <div className="col-11 textF">
@@ -257,31 +233,46 @@ const RegisterScreen = ({ history }) => {
                   </div>
                 </div>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carouselExampleControls"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
                 <span class="visually-hidden">Next</span>
               </button>
             </div>
-              
-              
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="btn btn-primary signInPtBtn"
-                  style={{ marginTop: "2%",width:"60%" }}
-                >
-                  Submit
-                </button>
-                
-                <div className="register">
-                  Already have an account? <Link to="/login">Login</Link>
-                </div>
+
+            <div className="text-center">
+              <button
+                type="submit"
+                className="btn btn-primary signInPtBtn"
+                style={{ marginTop: "2%", width: "60%" }}
+              >
+                Submit
+              </button>
+
+              <div className="register">
+                Already have an account? <Link to="/login">Login</Link>
               </div>
-            </form>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,0 +1,18 @@
+.home .row{
+    max-width: 100vw;
+}
+.home > div{
+    padding: 1% 4%;
+}
+.home h1{
+    padding: 1%;
+}
+.home h5{
+    text-transform: capitalize;
+}
+.link{
+    margin-bottom: 5% ;
+}
+.home .col-3{
+    margin: auto 2%;
+}

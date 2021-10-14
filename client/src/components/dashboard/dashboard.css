@@ -2,5 +2,14 @@
     max-width: 100vw;
 }
 .dashboard > div{
-    padding: 1% 3%;
+    padding: 0% 3%;
+}
+.seller .col-2,.seller .col-3,.customer .col-3{
+    margin: 0 2%;
+}
+.seller{
+    padding:2% 0;
+}
+.dashboard h2{
+    margin: 2% 0;
 }

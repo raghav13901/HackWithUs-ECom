@@ -1,0 +1,23 @@
+.inventory{
+    padding: 2% 3%;
+}
+.inventory .row,.shop .row{
+    max-width: 100vw;
+}
+.shop .row{
+    text-align: center;
+}
+.shop h1{
+    padding-top: 2%;
+    text-align: center;
+    text-transform: capitalize;
+}
+.inventory .row > div{
+    margin: auto 2%;
+}
+.inventory .row button{
+    display: inline-block;
+}
+.inventory .card .row{
+    margin-top: 5%;
+}
